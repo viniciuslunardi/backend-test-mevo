@@ -4,7 +4,6 @@
 - Faça um fork deste teste na sua conta do github.
 - Crie uma branch com o seu nome.
 - Realize commits com frequencia.
-- Faça um pull request para o nosso repositório ao final do teste. 
 
 ## Objetivo
 Implementar uma API REST que:
