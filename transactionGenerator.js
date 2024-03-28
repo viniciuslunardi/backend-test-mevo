@@ -12,7 +12,7 @@ function generateRandomNumber(digits) {
 function generateCSVLine() {
     const from = generateRandomNumber(13);
     const to = generateRandomNumber(13);
-    const amount = Math.floor(Math.random() * (1000000000 - 100 + 1)) + 100;
+    const amount = Math.floor(Math.random() * (1000000000 - 10 + 1)) + 100;
     return `${from};${to};${amount}`;
 }
 
