@@ -1,6 +1,6 @@
 - adicionar config para banco de dados - ok
 - adicionar infra (docker, github actions)
-- linter e prettier
+- linter e prettier - ok
 - testes e coverage 
 - alterar o readme
 - adicionar config.file

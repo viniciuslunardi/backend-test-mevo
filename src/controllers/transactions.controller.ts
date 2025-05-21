@@ -13,7 +13,16 @@ export default class TransactionController {
     public async processTransactions(
         req: Request,
         res: Response,
-    ): Promise<Response<{validTransactionsProcessed: number, invalidTransactionsProcessed: number, invalidTransactionsData: TransactionData[]} | Response>> {
+    ): Promise<
+        Response<
+            | {
+                  validTransactionsProcessed: number;
+                  invalidTransactionsProcessed: number;
+                  invalidTransactionsData: TransactionData[];
+              }
+            | Response
+        >
+    > {
         try {
             //@todo valir o tipo de arquivo que vamos processar e receber -- deve ser só csv
             if (!req.file) return res.status(422).send('file not sent'); // @todo tratamento de erros
