@@ -1,9 +1,9 @@
 import { Request, Response } from 'express';
 import { StatusCodes } from 'http-status-codes';
 
-import TransactionService from '../services/transactions.service';
-import logger from '../shared/logger';
-import { TransactionData } from '../types/transaction.types';
+import TransactionService from '../../services/transactions/transactions.service';
+import logger from '../../shared/logger';
+import { TransactionData } from '../../types/transaction.types';
 
 export default class TransactionController {
     private transactionService: TransactionService;
@@ -34,12 +34,10 @@ export default class TransactionController {
             const mimeTypesAllowed = 'text/csv'; // @todo deixar isso como config
 
             if (mimeTypesAllowed !== req.file.mimetype) {
-                return res
-                    .status(StatusCodes.UNSUPPORTED_MEDIA_TYPE)
-                    .send({
-                        message:
-                            'Unsupported file type. Only CSV files are allowed.',
-                    });
+                return res.status(StatusCodes.UNSUPPORTED_MEDIA_TYPE).send({
+                    message:
+                        'Unsupported file type. Only CSV files are allowed.',
+                });
             }
 
             logger.info(`Processing file...`);

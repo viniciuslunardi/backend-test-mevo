@@ -1,8 +1,8 @@
 import {
     InvalidSummary,
     InvalidSummaryModel,
-} from '../infra/db/mongo/models/invalidSummary';
-import { InvalidTransactionReasons } from '../types/transaction.types';
+} from '../../infra/db/mongo/models/invalidSummary';
+import { InvalidTransactionReasons } from '../../types/transaction.types';
 
 export class InvalidSummaryRepository {
     async create(transaction: Partial<InvalidSummary>) {

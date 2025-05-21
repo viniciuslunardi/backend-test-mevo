@@ -9,6 +9,7 @@ export default defineConfig([
             'node_modules/**',
             'transactionGenerator.js',
             'jest.config.js',
+            '**/*spec.ts',
         ],
     },
 
