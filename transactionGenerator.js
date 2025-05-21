@@ -1,4 +1,3 @@
-
 const path = require('path');
 
 // Função para gerar um número aleatório com a quantidade de dígitos especificada
@@ -18,7 +17,7 @@ function generateCSVLine() {
 
 // Função principal para gerar e exibir linhas CSV
 function displayCSVLines(linesCount) {
-    console.log('from;to;amount') 
+    console.log('from;to;amount');
     for (let i = 0; i < linesCount; i++) {
         console.log(generateCSVLine());
     }
@@ -29,7 +28,9 @@ const linesCount = process.argv[2] ? parseInt(process.argv[2], 10) : 100;
 
 // Verifica se o número de linhas é um número válido
 if (isNaN(linesCount)) {
-    console.error('Por favor, forneça um número válido de linhas como argumento.');
+    console.error(
+        'Por favor, forneça um número válido de linhas como argumento.',
+    );
     process.exit(1);
 }
 

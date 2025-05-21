@@ -1,5 +1,8 @@
-import { InvalidSummary, InvalidSummaryModel } from "../infra/db/mongo/models/invalidSummary";
-import { InvalidTransactionReasons } from "../types/transaction.types";
+import {
+    InvalidSummary,
+    InvalidSummaryModel,
+} from '../infra/db/mongo/models/invalidSummary';
+import { InvalidTransactionReasons } from '../types/transaction.types';
 
 export class InvalidSummaryRepository {
     async create(transaction: Partial<InvalidSummary>) {
@@ -16,7 +19,7 @@ export class InvalidSummaryRepository {
     }
 
     async findByReason(reason: InvalidTransactionReasons) {
-     return InvalidSummaryModel.find({ reason });
+        return InvalidSummaryModel.find({ reason });
     }
 
     // @todo mais métodos

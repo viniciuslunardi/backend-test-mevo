@@ -1,4 +1,7 @@
-import { Transaction, TransactionModel } from "../infra/db/mongo/models/transactions";
+import {
+    Transaction,
+    TransactionModel,
+} from '../infra/db/mongo/models/transactions';
 
 // @todo criar DTOs pra ficar mais facil de entender
 export class TransactionRepository {
@@ -10,7 +13,7 @@ export class TransactionRepository {
         // @todo paginar
         return TransactionModel.find();
     }
-  
+
     async findById(id: string) {
         return TransactionModel.findById(id);
     }

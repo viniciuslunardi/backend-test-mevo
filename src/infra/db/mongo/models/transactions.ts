@@ -2,7 +2,6 @@ import { ObjectId } from 'mongodb';
 import { prop, index, getModelForClass } from '@typegoose/typegoose';
 import { TimeStamps, Base } from '@typegoose/typegoose/lib/defaultClasses';
 
-
 @index({ suspicious: 1 })
 export class Transaction extends TimeStamps implements Base<ObjectId> {
     public _id!: ObjectId;

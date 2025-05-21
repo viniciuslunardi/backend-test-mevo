@@ -3,9 +3,9 @@ export interface MongoConfig {
     port: string;
     password: string;
     db: string;
-    user: string
+    user: string;
     auth: string;
-};
+}
 
 export interface config {
     db: { mongo: MongoConfig };

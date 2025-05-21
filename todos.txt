@@ -5,4 +5,3 @@
 - alterar o readme
 - adicionar config.file
 - adicionar middleware de tratamento de erros e headers de files
-- 
