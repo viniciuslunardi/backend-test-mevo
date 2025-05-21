@@ -1,7 +1,7 @@
 - adicionar config para banco de dados - ok
 - adicionar infra (docker, github actions)
 - linter e prettier - ok
-- testes e coverage 
-- alterar o readme
-- adicionar config.file
-- adicionar middleware de tratamento de erros e headers de files
+- testes e coverage - +/-
+- alterar o readme 
+- adicionar config.file - ok
+- adicionar middleware de tratamento de erros

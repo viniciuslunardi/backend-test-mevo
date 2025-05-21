@@ -4,7 +4,9 @@
   "description": "## Como começar - Faça um fork deste teste na sua conta do github. - Crie uma branch com o seu nome. - Realize commits com frequencia.",
   "main": "transactionGenerator.js",
   "scripts": {
-    "dev": "ts-node-dev src/app.ts",
+    "build": "tsc",
+    "start": "node --env-file=.env dist/app.js",
+    "dev": "ts-node-dev --env-file=.env src/app.ts",
     "test": "jest",
     "test:watch": "jest --watchAll",
     "test:coverage": "jest --coverage",

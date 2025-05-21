@@ -1,13 +1,13 @@
 export interface MongoConfig {
-    uri: string;
-    port: string;
-    password: string;
-    db: string;
-    user: string;
-    auth: string;
+    host?: string;
+    port?: string;
+    password?: string;
+    db?: string;
+    user?: string;
+    auth?: string;
 }
 
-export interface config {
+export interface Config {
     db: { mongo: MongoConfig };
     port: number;
     application: { transactionTreshold: number };
