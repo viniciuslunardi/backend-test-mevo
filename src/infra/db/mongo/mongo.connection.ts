@@ -1,4 +1,4 @@
-import mongoose from 'mongoose';
+import mongoose from "mongoose";
 import { MongoConfig } from '../../../types/config.types';
 import logger from '../../../shared/logger';
 
