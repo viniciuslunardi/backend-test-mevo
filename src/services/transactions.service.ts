@@ -1,14 +1,23 @@
 import csv from 'csv-parser';
 import { Readable } from 'stream';
-import { FileData, ProcessedData, TransactionData, InvalidTransactionReasons } from "../types/transaction.types";
 import logger from '../shared/logger';
+
+import { FileData, ProcessedData, TransactionData, InvalidTransactionReasons } from "../types/transaction.types";
+import { TransactionRepository } from '../repositories/transaction.repository';
+import { InvalidSummaryRepository } from '../repositories/invalidSummary.repository';
 
 const SUSPICIOUS_TRESHOLD = 5000000 // @todo -- config file
 
 export default class TransactionService {
-  constructor() {}
+  private transactionRepository: TransactionRepository;
+  private invalidSummaryRepository: InvalidSummaryRepository;
 
-  public async processTransaction(bufferFile: Buffer): Promise<ProcessedData> {
+  constructor() {
+        this.transactionRepository = new TransactionRepository();
+        this.invalidSummaryRepository = new InvalidSummaryRepository();
+  }
+
+  async processTransaction(bufferFile: Buffer): Promise<ProcessedData> {
         const processedData: ProcessedData = { valid: [], invalid: []};
         const transactionValues = new Set<string>() 
         
@@ -18,7 +27,7 @@ export default class TransactionService {
         return new Promise((resolve, reject) => {
             stream.pipe(csv({separator: ";"})).on('data', (data:  FileData ) => {
                 try {
-                    const from = parseInt(data.from); // @todo conversão deixando passar "NaN"
+                    const from = parseInt(data.from); 
                     const to = parseInt(data.to);
                     const amount = parseInt(data.amount);
 
@@ -55,8 +64,36 @@ export default class TransactionService {
                     reject(err);
 
                 })
-                .on("end", () => {
+                .on("end", async () => {
                     // @todo - salvar num banco de dados 
+                    const { valid, invalid } = processedData;
+                    
+                    //@todo ver uma forma de fazer em bulk, vou deixar assim por agora, sei que ta meio feio
+                    const promises = [];
+
+                    for (const validTransactions of valid) {
+                        const data = {
+                            from: validTransactions.transactionData.from,
+                            to: validTransactions.transactionData.to,
+                            amount: validTransactions.transactionData.amount,
+                            suspicious: validTransactions.suspicious
+                        }
+                        promises.push(this.transactionRepository.create(data));
+                    }
+
+                     for (const invalidTransactions of invalid) {
+                        const data = { 
+                            //@todo adicionar o filename
+                            summary: `FROM:${invalidTransactions.transactionData.from}-
+                                                 TO${invalidTransactions.transactionData.to}-
+                                                 AMOUNT${invalidTransactions.transactionData.amount}`,
+                            reason: invalidTransactions.reason
+                        }
+
+                        promises.push(this.invalidSummaryRepository.create(data));
+                    }
+
+                    await Promise.all(promises);
                     resolve(processedData);
             });
         })

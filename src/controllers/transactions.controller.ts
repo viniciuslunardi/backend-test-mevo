@@ -1,7 +1,6 @@
 import { Request, Response } from 'express';
 import TransactionService from '../services/transactions.service';
 import logger from '../shared/logger';
-import { InvalidTransactionReasons } from '../types/transaction.types';
 
 export default class TransactionController {
     private transactionService: TransactionService;

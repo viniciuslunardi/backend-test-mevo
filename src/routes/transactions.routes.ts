@@ -6,6 +6,6 @@ const router = express.Router();
 const upload = multer({ storage: multer.memoryStorage() });
 const controller = new TransactionController()
 
-router.post('/process-transactions', upload.single('file'), controller.processTransactions.bind(controller));
+router.post('/process', upload.single('file'), controller.processTransactions.bind(controller));
 
 export default router;
