@@ -1,5 +1,50 @@
 # Descrição do Teste Técnico
 
+## Pré-requisitos
+
+- Node.js 22+
+- npm
+
+## Rodando a aplicação
+
+```bash
+    npm install
+    npm run build
+    npm start
+```
+
+A API ficará disponível conforme a porta definida no arquivo `.env` (padrão: 9095).
+
+## Scripts úteis
+
+- `npm run dev` - Inicia o servidor em modo desenvolvimento (hot reload)
+- `npm run test` - Roda os testes automatizados (use :coverage para ver a cobertura de testes)
+- `npm run lint` - Roda o linter do projeto (padrão de código ESlint)
+- `npm run format` - Formata o código com Prettier
+
+## Rodando com Docker
+
+```bash
+    docker compose up --build
+```
+
+## Variáveis de ambiente
+
+| env                  | value     |
+| -------------------- | --------- |
+| PORT                 | "9095"    |
+| TRANSACTION_TRESHOLD | 5000000   |
+| MONGO_HOST           | "mongodb" |
+| MONGO_PORT           | 27017     |
+| MONGO_DB             | "db"      |
+| MONGO_PASSWORD       | "foo"     |
+| MONGO_USER           | "bar"     |
+| MONGO_AUTH           | "foo"     |
+| LOG_LEVEL            | "debug"   |
+| LOG_LABEL            | "MEVO"    |
+
+---
+
 ## Como começar
 
 - Faça um fork deste teste na sua conta do github.

@@ -11,5 +11,7 @@
 - melhorar os repositórios criando dtos e mais métodos 
 - melhorar logs e o logger ser mais dinamico
 - adicionar um tipo de observabilidade
-- melhorar e adicionar mais testes
+- melhorar e adicionar mais testes (agora ta fraco)
 - revisar o código num geral 
+- documentação da api
+- automaizar deploy (ci/cd) com github-actions
