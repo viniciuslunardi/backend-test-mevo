@@ -11,4 +11,5 @@ export interface Config {
     db: { mongo: MongoConfig };
     port: number;
     application: { transactionTreshold: number };
+    log: { level: string; label: string };
 }

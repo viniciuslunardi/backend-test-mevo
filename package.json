@@ -5,7 +5,7 @@
   "main": "transactionGenerator.js",
   "scripts": {
     "build": "tsc",
-    "start": "node --env-file=.env dist/app.js",
+    "start": "node --env-file=.env dist/src/app.js",
     "dev": "ts-node-dev --env-file=.env src/app.ts",
     "test": "jest",
     "test:watch": "jest --watchAll",

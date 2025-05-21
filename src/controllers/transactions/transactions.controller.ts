@@ -41,12 +41,14 @@ export default class TransactionController {
             }
 
             logger.info(`Processing file...`);
+            logger.debug(req.file);
             const processedData =
                 await this.transactionService.processTransaction(
                     req.file.buffer,
                     req.file.originalname,
                 );
 
+            logger.info(`File processed sucessfully!`);
             return res.status(StatusCodes.OK).send({
                 validTransactionsProcessed: processedData.valid.length,
                 invalidTransactionsProcessed: processedData.invalid.length,

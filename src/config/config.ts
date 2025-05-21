@@ -17,6 +17,10 @@ const config: Config = {
             auth: process.env.MONGO_AUTH,
         },
     },
+    log: {
+        level: process.env.LOG_LEVEL || 'debug',
+        label: process.env.LOG_LABEL || 'MEVO-PROCESSOR',
+    },
 };
 
 export default config;
