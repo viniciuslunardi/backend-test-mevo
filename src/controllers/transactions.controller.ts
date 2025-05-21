@@ -1,4 +1,6 @@
 import { Request, Response } from 'express';
+import { StatusCodes } from 'http-status-codes';
+
 import TransactionService from '../services/transactions.service';
 import logger from '../shared/logger';
 import { TransactionData } from '../types/transaction.types';
@@ -24,25 +26,42 @@ export default class TransactionController {
         >
     > {
         try {
-            //@todo valir o tipo de arquivo que vamos processar e receber -- deve ser só csv
-            if (!req.file) return res.status(422).send('file not sent'); // @todo tratamento de erros
+            if (!req.file)
+                return res
+                    .status(StatusCodes.BAD_REQUEST)
+                    .send({ message: `File was not sent.` }); // @todo aqui eu trataria melhor essa mensagem de erro, deixando isso mais dinamico e usando uma forma de suporte a i18n
 
-            logger.info(`Processing file...`); // @todo melhorar os loggers
+            const mimeTypesAllowed = 'text/csv'; // @todo deixar isso como config
+
+            if (mimeTypesAllowed !== req.file.mimetype) {
+                return res
+                    .status(StatusCodes.UNSUPPORTED_MEDIA_TYPE)
+                    .send({
+                        message:
+                            'Unsupported file type. Only CSV files are allowed.',
+                    });
+            }
+
+            logger.info(`Processing file...`);
             const processedData =
                 await this.transactionService.processTransaction(
                     req.file.buffer,
+                    req.file.originalname,
                 );
 
-            // @todo - http status codes
-            return res.status(200).send({
+            return res.status(StatusCodes.OK).send({
                 validTransactionsProcessed: processedData.valid.length,
                 invalidTransactionsProcessed: processedData.invalid.length,
                 invalidTransactionsData: processedData.invalid,
             });
         } catch (err) {
+            logger.error(
+                `@CRITICAL:::: Servidor encontrou erro ao processar a request!`,
+            );
             logger.error(err);
-            //@todo use https-status-codes
-            return res.status(500).send('Server error');
+            return res
+                .status(StatusCodes.INTERNAL_SERVER_ERROR)
+                .send({ message: 'Server unable to process request' });
         }
     }
 }

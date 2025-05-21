@@ -22,5 +22,5 @@ export class TransactionRepository {
         return TransactionModel.find({ suspicious: true });
     }
 
-    // @todo mais métodos
+    // @todo em um cenário real, aqui teriamos mais métodos
 }

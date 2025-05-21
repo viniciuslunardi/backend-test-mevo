@@ -22,7 +22,10 @@ export default class TransactionService {
         this.invalidSummaryRepository = new InvalidSummaryRepository();
     }
 
-    async processTransaction(bufferFile: Buffer): Promise<ProcessedData> {
+    async processTransaction(
+        bufferFile: Buffer,
+        fileName: string,
+    ): Promise<ProcessedData> {
         const processedData: ProcessedData = { valid: [], invalid: [] };
         const transactionValues = new Set<string>();
 
@@ -109,9 +112,9 @@ export default class TransactionService {
 
                     for (const invalidTransactions of invalid) {
                         const data = {
-                            //@todo adicionar o filename
-                            summary: `FROM:${invalidTransactions.transactionData.from}-TO${invalidTransactions.transactionData.to}-AMOUNT${invalidTransactions.transactionData.amount}`,
+                            summary: `FROM=${invalidTransactions.transactionData.from}-TO=${invalidTransactions.transactionData.to}-AMOUNT=${invalidTransactions.transactionData.amount}`,
                             reason: invalidTransactions.reason,
+                            fileName,
                         };
 
                         promises.push(

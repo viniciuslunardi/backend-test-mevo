@@ -22,5 +22,5 @@ export class InvalidSummaryRepository {
         return InvalidSummaryModel.find({ reason });
     }
 
-    // @todo mais métodos
+    // @todo em um cenário real, aqui teriamos mais métodos
 }
