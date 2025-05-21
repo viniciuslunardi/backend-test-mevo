@@ -6,6 +6,7 @@ const config: Config = {
         transactionTreshold: process.env.SUSPICIOUS_TRESHOLD
             ? parseInt(process.env.SUSPICIOUS_TRESHOLD)
             : 5000000,
+        mimeTypesAllowed: ['text/csv'], // @todo fazer isso virar uma env
     },
     db: {
         mongo: {

@@ -4,6 +4,7 @@ import { StatusCodes } from 'http-status-codes';
 import TransactionService from '../../services/transactions/transactions.service';
 import logger from '../../shared/logger';
 import { TransactionData } from '../../types/transaction.types';
+import config from '../../config/config';
 
 export default class TransactionController {
     private transactionService: TransactionService;
@@ -31,9 +32,9 @@ export default class TransactionController {
                     .status(StatusCodes.BAD_REQUEST)
                     .send({ message: `File was not sent.` }); // @todo aqui eu trataria melhor essa mensagem de erro, deixando isso mais dinamico e usando uma forma de suporte a i18n
 
-            const mimeTypesAllowed = 'text/csv'; // @todo deixar isso como config
+            const mimeTypesAllowed = config.application.mimeTypesAllowed; // @todo deixar isso como config
 
-            if (mimeTypesAllowed !== req.file.mimetype) {
+            if (!mimeTypesAllowed.includes(req.file.mimetype)) {
                 return res.status(StatusCodes.UNSUPPORTED_MEDIA_TYPE).send({
                     message:
                         'Unsupported file type. Only CSV files are allowed.',
@@ -46,7 +47,7 @@ export default class TransactionController {
                     originalname: req.file.originalname,
                     mimetype: req.file.mimetype,
                 }),
-            ); // @todo fazer isso de uma forma mais interessante
+            ); // @todo logar isso de uma forma mais interessante (melhorar os logs num geral)
             const processedData =
                 await this.transactionService.processTransaction(
                     req.file.buffer,

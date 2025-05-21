@@ -8,11 +8,9 @@ import { connectDb } from './repositories/mongo/mongo.connection';
 const app = express();
 
 app.use(express.json());
-// @todo melhorar a parte de segurança com middlewares para verificar os tipos de arquivos
 app.use('/transactions', router);
 
 // @todo eu deixaria melhor esse app.ts, como uma classe que instancia os controllers, db e routes e sobe o server
-
 connectDb(config.db.mongo).then(() => {
     app.listen(config.port, () => {
         logger.info(`Server running on ${config.port}`);

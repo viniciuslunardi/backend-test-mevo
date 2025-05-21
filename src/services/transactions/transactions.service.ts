@@ -10,8 +10,9 @@ import {
 } from '../../types/transaction.types';
 import { TransactionRepository } from '../../repositories/mongo/transactions/transaction.repository';
 import { InvalidSummaryRepository } from '../../repositories/mongo/invalidSummary/invalidSummary.repository';
+import config from '../../config/config';
 
-const SUSPICIOUS_TRESHOLD = 5000000; // @todo -- config file
+const SUSPICIOUS_TRESHOLD = config.application.transactionTreshold;
 
 export default class TransactionService {
     private transactionRepository: TransactionRepository;

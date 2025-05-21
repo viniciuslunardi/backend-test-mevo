@@ -6,6 +6,7 @@ export class InvalidSummaryRepository {
         return await InvalidSummaryModel.create(transaction);
     }
 
+    // @todo todos os repositories, eu daria mais atenção, trataria melhor em casos de erro, adicionaria mais funcionalidades, adicionaria testes, etc
     async findAll() {
         // @todo paginar
         return InvalidSummaryModel.find();
