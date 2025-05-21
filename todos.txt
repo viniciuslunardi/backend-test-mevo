@@ -6,14 +6,14 @@
 - adicionar config.file - ok
 
 
--- coisas que gostaria de fazer mas não vou ter tempo agora:
+--*** coisas que gostaria de fazer mas não vou ter tempo agora: ***--
 - adicionar middleware de tratamento de erros 
 - adicionar algum tipo de auth e revisar a segurança num geral
 - melhorar processamento e armazenamento em lote no banco
-- melhorar os repositórios criando dtos e mais métodos 
+- melhorar os repositórios criando dtos e mais métodos (e revisar se faz sentido ter 2 repos/2 collections para invalidSumary e transactions)
 - melhorar logs e o logger ser mais dinamico
 - adicionar um tipo de observabilidade
 - melhorar e adicionar mais testes (agora ta fraco)
 - revisar o código num geral 
 - documentação da api
-- automaizar deploy (ci/cd) com github-actions
+- automatizar build e deploy (ci/cd) com github-actions
