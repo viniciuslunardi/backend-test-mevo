@@ -49,6 +49,9 @@
         "winston": "^3.17.0"
     },
     "lint-staged": {
-        "*.--write": "prettier --write"
+        "*.--write": [
+          "prettier . --write",
+          "eslint . --ext .ts --fix"
+        ]
     }
 }
