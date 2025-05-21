@@ -1,7 +1,4 @@
-import {
-    Transaction,
-    TransactionModel,
-} from '../../infra/db/mongo/models/transactions';
+import { Transaction, TransactionModel } from '../models/transactions';
 
 // @todo criar DTOs pra ficar mais facil de entender
 export class TransactionRepository {

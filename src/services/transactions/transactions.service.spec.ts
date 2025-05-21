@@ -1,10 +1,10 @@
 import TransactionService from './transactions.service';
-import { TransactionRepository } from '../../repositories/transactions/transaction.repository';
-import { InvalidSummaryRepository } from '../../repositories/invalidSummary/invalidSummary.repository';
+import { TransactionRepository } from '../../repositories/mongo/transactions/transaction.repository';
+import { InvalidSummaryRepository } from '../../repositories/mongo/invalidSummary/invalidSummary.repository';
 import { InvalidTransactionReasons } from '../../types/transaction.types';
 
-jest.mock('../../repositories/transactions/transaction.repository');
-jest.mock('../../repositories/invalidSummary/invalidSummary.repository');
+jest.mock('../../repositories/mongo/transactions/transaction.repository');
+jest.mock('../../repositories/mongo/invalidSummary/invalidSummary.repository');
 
 const mockTransactionRepo = TransactionRepository as jest.MockedClass<
     typeof TransactionRepository

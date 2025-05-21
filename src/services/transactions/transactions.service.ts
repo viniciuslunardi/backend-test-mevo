@@ -8,8 +8,8 @@ import {
     TransactionData,
     InvalidTransactionReasons,
 } from '../../types/transaction.types';
-import { TransactionRepository } from '../../repositories/transactions/transaction.repository';
-import { InvalidSummaryRepository } from '../../repositories/invalidSummary/invalidSummary.repository';
+import { TransactionRepository } from '../../repositories/mongo/transactions/transaction.repository';
+import { InvalidSummaryRepository } from '../../repositories/mongo/invalidSummary/invalidSummary.repository';
 
 const SUSPICIOUS_TRESHOLD = 5000000; // @todo -- config file
 

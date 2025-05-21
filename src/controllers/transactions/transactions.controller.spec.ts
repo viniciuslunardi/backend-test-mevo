@@ -89,6 +89,7 @@ describe('TransactionController', () => {
             validTransactionsProcessed: valid.length,
             invalidTransactionsProcessed: invalid.length,
             invalidTransactionsData: invalid,
+            fileName: mockReq.file?.originalname,
         });
         expect(logger.info).toHaveBeenCalledWith('Processing file...');
     });

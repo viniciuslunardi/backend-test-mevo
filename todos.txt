@@ -1,7 +1,15 @@
 - adicionar config para banco de dados - ok
-- adicionar infra (docker, github actions)
+- adicionar infra (docker, github actions) - ok (+/-)
 - linter e prettier - ok
 - testes e coverage - +/-
-- alterar o readme 
+- alterar o readme -
 - adicionar config.file - ok
-- adicionar middleware de tratamento de erros
+- adicionar middleware de tratamento de erros -
+
+-- coisas que gostaria de fazer mas não vou ter tempo agora:
+- melhorar processamento e armazenamento em lote no banco
+- melhorar os repositórios criando dtos e mais métodos 
+- melhorar logs e o logger ser mais dinamico
+- adicionar um tipo de observabilidade
+- melhorar e adicionar mais testes
+- revisar o código num geral 

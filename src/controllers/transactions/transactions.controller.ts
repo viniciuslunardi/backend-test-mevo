@@ -41,7 +41,12 @@ export default class TransactionController {
             }
 
             logger.info(`Processing file...`);
-            logger.debug(req.file);
+            logger.debug(
+                JSON.stringify({
+                    originalname: req.file.originalname,
+                    mimetype: req.file.mimetype,
+                }),
+            ); // @todo fazer isso de uma forma mais interessante
             const processedData =
                 await this.transactionService.processTransaction(
                     req.file.buffer,
@@ -53,6 +58,7 @@ export default class TransactionController {
                 validTransactionsProcessed: processedData.valid.length,
                 invalidTransactionsProcessed: processedData.invalid.length,
                 invalidTransactionsData: processedData.invalid,
+                fileName: req.file.originalname,
             });
         } catch (err) {
             logger.error(

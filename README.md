@@ -31,9 +31,9 @@ Implementar uma API REST que:
 
 ### Processamento do Arquivo
 
-- O arquivo deve ser lido e as operações devem ser validadas conforme as regras acima.
-- As operações validadas devem ser armazenadas em um banco de dados (você decide).
-- Um resumo das operações não validadas (com o motivo da invalidade) deve ser gerado e armazenado no banco de dados juntamente com o nome do arquivo.
+- O arquivo deve ser lido e as operações devem ser validadas conforme as regras acima. - OK
+- As operações validadas devem ser armazenadas em um banco de dados (você decide). - OK
+- Um resumo das operações não validadas (com o motivo da invalidade) deve ser gerado e armazenado no banco de dados juntamente com o nome do arquivo. - OK
 
 ### Resposta da API
 

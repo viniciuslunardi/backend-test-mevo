@@ -42,3 +42,4 @@ test/*.js
 *.map
 
 /dist
+/infra/.env
