@@ -1,7 +1,7 @@
 import express from 'express';
 
 import config from './config/config';
-import router from './routes/transactions.routes';
+import router from './routes/transactions/transactions.routes';
 import logger from './shared/logger';
 import { connectDb } from './repositories/mongo/mongo.connection';
 
